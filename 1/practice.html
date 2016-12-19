@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title>practice</title>
+		<script src="angular.min.js"></script>
+		<script>
+			function test1($scope, $rootScope, $timeout) {
+				$rootScope.name = "zou_r";
+				$scope.name = "zou_1";
+				$scope.fnClick = function () {
+					$timeout(function () {
+						$scope.name = "zou_1 update";
+					}, 1000)
+				}			
+			}
+			function test2($scope) {
+				$scope.name = "zou_2";				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div ng-controller="test1">
+			{{name}}
+			<button ng-click="fnClick()">change</button>
+		</div>
+		<div ng-controller="test2">{{name}}</div>
+	</body>
+</html>
