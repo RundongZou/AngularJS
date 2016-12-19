@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title>practice</title>
+		<script src="angular.min.js"></script>
+		<script>
+			function test1($scope, $rootScope, $timeout) {
+                $scope.val = "请输入内容"
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<div ng-controller="test1">
+			<input type="text" ng-model="val" />
+			<p>{{val}}</p>
+		</div>		
+	</body>
+</html>

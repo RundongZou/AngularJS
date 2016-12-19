@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="list">
+	<head>
+		<meta charset="UTF-8">
+		<title>列表页</title>
+		<style type="text/css">
+		body {
+			font-family: "微软雅黑";
+		}
+		    ul, ol, li {
+		    	list-style: none;
+		    }
+			li {
+				text-align: center;
+				width: 200px;
+				padding: 5px;
+				border: 1px solid #ccc;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+			img {
+				width: 120px;
+				height: 120px;
+			}
+			p {
+				width: 180px;
+				margin: 0;
+			}
+			.red {
+				color: red
+			}
+		</style>
+		<script src="angular.min.js"></script>
+	    <script>
+	     
+	    	var module_list = angular.module("list", []);
+	    	module_list.controller("control_list", ["$scope", "$http", function ($scope, $http) {	    			     
+//		                 $http.get("http://datainfo.duapp.com/shopdata/getclass.php")
+//			.success(function(response) {
+//				//$scope.data_list = JSON.parse(response);
+//				console.log(response)
+//			});
+	$http.jsonp("http://datainfo.duapp.com/shopdata/getGoods.php?callback=success").success(success=function(response) {
+				$scope.data_list = response;
+				//console.log(response)
+		});			
+	    		$scope.reverse = false;
+	    		$scope.keywords = ["男", "女", "衬衫", "礼服", "棉服", "短外套"];
+	    		$scope.change_filter = function (index) {
+	    			$scope.keyword = $scope.keywords[index];
+	    		}
+	    		$scope.change_sort = function () {
+	    			$scope.reverse = !$scope.reverse;
+	    		}
+	    	}])
+	    </script>
+	</head>
+	<body>
+		<div ng-controller="control_list">
+			<div>
+				<button ng-click="change_sort()">{{reverse?"正序":"倒序"}}</button>
+			</div>
+			<div>
+				<button ng-repeat = "data in keywords" ng-click="change_filter($index)">{{data}}</button>
+			</div>
+			<ul>
+				<li ng-repeat="data in data_list | orderBy : 'price*1':reverse | filter: keyword">
+					<img src="{{data.goodsListImg}}" alt="" />
+					<div>
+						<p>商品名：{{data.goodsName}}</p>
+						<p>类别：{{data.className}}</p>
+						<p class="red">单价：{{data.price }}</p>
+					</div>					
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

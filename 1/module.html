@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title>practice</title>
+		<script src="angular.min.js"></script>
+		<script>
+			var module_myApp = angular.module("myApp", []);
+			module_myApp.controller("control_1", function ($scope) {
+				$scope.name = "hello 1";
+			})
+			module_myApp.controller("control_2", function ($scope) {
+				$scope.val = "hello 2";
+			})
+			module_myApp.controller("control_3", ["$scope", "$rootScope", function (a) {
+				a.name = "hello 3, 我不怕压缩";
+			}])
+		</script>
+	</head>
+	<body>
+      <p ng-controller="control_1">{{name}}</p>
+      <input type="text" ng-controller="control_2" ng-model="val"/>
+      <p ng-controller="control_3">{{name}}</p>
+	</body>
+</html>
