@@ -36,8 +36,10 @@
 	<body ng-app="module_filter">
 		<ul ng-controller="controller_filter">
 			<li>{{name}}</li>
+			<li>{{time}}</li>
+			<li ng-repeat="lang in languages | myFilter_staticLanguage">{{lang.name}}</li>
 			<li ng-repeat="data in data_list">
-				<img src="{{data.goodsListImg}}" alt="" />
+				<img ng-src="{{data.goodsListImg}}" alt="" />
 					<div>
 						<p>商品名：{{data.goodsName}}</p>
 						<p>类别：{{data.className}}</p>

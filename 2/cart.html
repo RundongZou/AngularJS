@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cart</title>
+		<script src="angular.min.js"></script>
+		<script src="js/cart.js"></script>
+		<style type="text/css">
+			body {
+				font-family: "微软雅黑";
+			}
+		    ul, ol, li {
+		    	list-style: none;
+		    }
+		    ul {
+		    	float: left;
+		    	margin-top: 40px;
+		    }
+			li {
+				text-align: center;
+				width: 200px;
+				padding: 5px;
+				border: 1px solid #ccc;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+			div {
+				margin-top: 6px;
+			}
+			.show_total {
+				position: fixed;
+				z-index: 1;
+			}
+			img {
+				width: 120px;
+				height: 120px;
+			}
+			p {
+				width: 180px;
+				margin: 0;
+				margin-top: 6px;
+			}
+			input { width: 30px; text-align: center;}
+			.red {
+				color: red;
+			}
+		</style>
+	</head>
+	<body ng-app="module_cart">
+		<div ng-controller="controller_cart">
+			<div class="show_total">
+				总数量： <span ng-bind="total_num"></span>
+				&nbsp; 总金额: <em class="red" ng-bind="total_price | currency"></em>
+			</div>
+			<ul>
+				<li ng-repeat="data in cart_data">
+					<img ng-src="{{data.goodsListImg}}" alt="" />
+					<p>商品名： <span ng-bind="data.goodsName"></span></p>
+					<p class="red">单价： <span ng-bind="data.price | currency"></span></p>
+					<div>
+						<button ng-click="change_number(-1, $index)">-</button>
+						<input ng-value="data.number" />
+						<button ng-click="change_number(1, $index)">+</button>
+					</div>
+					<p><button ng-click="change_number(0, $index)">删除</button></p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
