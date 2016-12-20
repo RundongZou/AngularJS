@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>filter</title>
+		<style type="text/css">
+			body {
+				font-family: "微软雅黑";
+			}
+		    ul, ol, li {
+		    	list-style: none;
+		    }
+			li {
+				text-align: center;
+				width: 200px;
+				padding: 5px;
+				border: 1px solid #ccc;
+				margin-bottom: 5px;
+				font-size: 14px;
+			}
+			img {
+				width: 120px;
+				height: 120px;
+			}
+			p {
+				width: 180px;
+				margin: 0;
+			}
+			.red {
+				color: red;
+			}
+		</style>
+		<script src="angular.min.js"></script>
+		<script src="js/filter.js"></script>
+	</head>
+	<body ng-app="module_filter">
+		<ul ng-controller="controller_filter">
+			<li>{{name}}</li>
+			<li>{{time}}</li>
+			<li ng-repeat="lang in languages | myFilter_staticLanguage">{{lang.name}}</li>
+			<li ng-repeat="data in data_list">
+				<img ng-src="{{data.goodsListImg}}" alt="" />
+					<div>
+						<p>商品名：{{data.goodsName}}</p>
+						<p>类别：{{data.className}}</p>
+						<p class="red">单价：{{data.price | currency}}</p>
+					</div>	
+			</li>
+			
+		</ul>
+		
+		<!--<script>
+			var str = "zou run dong";
+			var str_split_by_blank = str.split(' ');
+       	    console.log(str_split_by_blank)
+       	    for (var i = 0, len = str_split_by_blank.length; i < len; i++) {
+       	    	str_split_by_blank[i] = 
+       	    	str_split_by_blank[i][0].toUpperCase()
+       	    	+ str_split_by_blank[i].substring(1);
+       	    	console.log(str_split_by_blank[i]);
+       	    }
+		</script>-->
+	</body>
+</html>

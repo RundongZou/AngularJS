@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title>practice</title>
+		<script src="angular.min.js"></script>
+		<script>
+			function test1($scope, $rootScope, $timeout) {
+				$rootScope.name = "zou_r";
+				$scope.name = "zou_1";
+				$scope.data_list = [
+					{
+						"name": "邹zou",
+						"age": 18,
+						"price": "123"
+					},
+					{
+						"name": "润run",
+						"age": 19,
+						"price": "234"
+					},
+					{
+						"name": "东dong",
+						"age": 20,
+						"price": "341"
+					},
+					{
+						"name": "邹润东zourundong",
+						"age": 13,
+						"price": "888"
+					}
+				];
+				$scope.fnClick = function () {
+					$timeout(function () {
+						$scope.name = "zou_1 update";
+					}, 1000)
+				};
+			}
+			function test2($scope) {
+				$scope.name = "zou_2";				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div ng-controller="test1">
+			{{name}}
+			<button ng-click="fnClick()">change</button>
+		</div>
+		<div ng-controller="test2">{{name}}</div>
+		<div ng-controller="test1">
+			<ul>
+				<li ng-repeat="data in data_list | orderBy: 'age' | filter: '邹'">
+					<p>序号： {{$index + 1}}</p>
+					<p>姓名： {{data.name | limitTo: 3}}</p>
+					<p>年龄： {{data.age}}</p>
+					<p>身价： {{data.price | currency: "$"}}</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
