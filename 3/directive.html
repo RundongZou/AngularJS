@@ -70,7 +70,7 @@
 <!--如果循环到最后一个（循环结束），需要更新iscroll的高度
 			</div>-->
 			<div>
-				<p ng-repeat-start="data in data_list">数据： {{data}}</p>
+				<p ng-repeat-start="data in data_list track by $index">数据： {{data}}</p>
 				<p>索引值： {{$index}}</p>
 				<p>第一个： {{$first}}</p>
 				<p>中间： {{$middle}}</p>

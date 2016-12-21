@@ -15,5 +15,5 @@ angular.module("module_directive",["ngSanitize"])
        	    $scope.ifShow = false;
        }])
        .controller("directive_repeat", ["$scope", function ($scope) {
-       	    $scope.data_list = [1, 2, 3, 4, 5];
+       	    $scope.data_list = [1, 3, 3, 4, 5];
        }])

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<link rel="stylesheet" href="css/common.css" />
+		<script src="js/angular.min.js"></script>
+		<script src="js/directives.js"></script>
+		<script src="js/cart.js"></script>
+	</head>
+	<body ng-app="cartApp">
+        <my-header>购物车-zou</my-header>
+        <div ng-controller="controller_cart">
+			<div class="show_total">
+				总数量： <span ng-bind="total_num"></span>
+				&nbsp; 总金额: <em class="red" ng-bind="total_price | currency"></em>
+			</div>
+			<ul class="content">
+				<li ng-repeat="data in cart_data">
+					<img ng-src="{{data.goodsListImg}}" alt="" />
+					<p>商品名： <span ng-bind="data.goodsName"></span></p>
+					<p class="red">单价： <span ng-bind="data.price | currency"></span></p>
+					<div>
+						<button ng-click="change_number(-1, $index)">-</button>
+						<input ng-value="data.number" />
+						<button ng-click="change_number(1, $index)">+</button>
+					</div>
+					<p><button ng-click="change_number(0, $index)">删除</button></p>
+				</li>
+			</ul>
+		</div>
+        <my-footer index="2"></my-footer>
+	</body>
+</html>
