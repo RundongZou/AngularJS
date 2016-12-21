@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>利用angular实现倒计时获取验证码的效果</title>
+		<script src="js/angular.min.js"></script>
+		<script src="js/code.js"></script>
+	</head>
+	<body ng-app="module_code">
+		<div ng-controller="code">
+			<button ng-disabled="cantSend" ng-click="fnSend()">{{btnText}}</button>
+		</div>
+	</body>
+</html>
