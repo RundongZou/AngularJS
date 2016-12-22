@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>custom_service</title>
+		<script src="js/angular.min.js"></script>
+		<script src="js/custom_service.js"></script>
+	</head>
+	<body ng-app="module_customService">
+		<div ng-controller="myCtrl">
+			<ul>
+				<li ng-repeat="data in data_list">
+					<p>商品名称： {{data.name}}</p>
+					<p>单价： {{data.price}}</p>
+					<p>数量： {{data.number}}</p>
+					<button ng-click="delete_item(data.goodsId)">删除</button>
+				</li>
+			</ul>
+			<div>
+				<input ng-model="name" placeholder="商品名称"/>
+				<input ng-model="price" placeholder="单价"/>
+				<input ng-model="number" placeholder="数量"/>
+				<button ng-click="add_item()">添加商品</button>
+			</div>
+		</div>
+	</body>
+</html>
