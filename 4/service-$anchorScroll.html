@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				height: 800px;
+				margin: 20px;
+			}
+		</style>
+		<script src="js/angular.min.js"></script>
+		<script>
+			angular.module("myApp", [])
+			       .controller("myCtrl", ["$scope", "$location", "$anchorScroll", function ($scope, $location, $anchorScroll) {
+			       	    $scope.fnJump = function () {
+			       	    	$location.hash("page2");
+			       	    	$anchorScroll();
+			       	    }
+			       }])
+		</script>
+	</head>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<button ng-click="fnJump()">jump</button>
+		<div id="page1" style="background-color:lightcoral">page1</div>
+		<div id="page2" style="background-color:lightblue">page2</div>
+	</body>
+</html>
