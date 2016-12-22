@@ -4,10 +4,10 @@ angular.module("module_q", [])
        	    var promise1 = defer1.promise;
        	    promise1.then(function (data) {
        	    	console.log("zou-success")
-       	    }), function (data) {
+       	    }, function (data) {
        	    	console.log("zou-error")
-       	    };
-       	    
+       	    });
+       	   
        	    $scope.fn_click = function (err) {
        	    	if (err) {
        	    		defer1.reject("失败");

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AngularJS 自定义服务——provider</title>
+		<script src="../js/angular.min.js"></script>
+		<script>
+			angular.module("my_app", [])
+			       .provider("my_random", function () {
+				       	return {
+				       		int: true,
+				       	    $get: function () {
+				       	    	return function (min_num, max_num) {
+				       	    		var number = Math.random()*(max_num - min_num) + min_num;
+				       	    		return this.int ? parseInt(number) : number;
+				       	    	}.bind(this)
+				       	    }
+				       	}			       	    
+			       })
+			       .config(["my_randomProvider", function (my_randomProvider) {
+			       	    this.int = true;
+			       }.bind(this)])
+			       .controller("my_ctrl", ["$scope", "my_random", function ($scope, my_random) {
+			       	    console.log(my_random(5,20));
+			       }])
+		</script>
+	</head>
+	<body ng-app="my_app">
+		<div ng-controller="my_ctrl"></div>
+	</body>
+</html>

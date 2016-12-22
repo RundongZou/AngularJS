@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>interpolate</title>
+		<script src="js/angular.min.js"></script>
+		<script src="js/interpolate.js"></script>
+	</head>
+	<body ng-app="module_interpolate">
+		<div ng-controller="controller_interpolate">
+			<p><input ng-model="val1" /></p>
+			<p><input ng-model="val2" /></p>
+			<p><input ng-model="val3" ng-change="fn_change()"/></p>
+			<p>{{text3}}</p>
+		</div>
+	</body>
+</html>
