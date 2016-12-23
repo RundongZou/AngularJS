@@ -1,0 +1,11 @@
+<div ng-controller="ctrl_list">
+	<ul>
+		<li ng-repeat="data in data_list | orderBy: 'price*1': true">
+			<a ng-href="#detail/{{data.goodsID}}">
+				<img ng-src=" {{data.goodsListImg}}"/>
+			</a>
+			<p>商品名称： {{data.goodsName}}</p>
+			<p ng-class="{red: true}">商品单价： {{data.price | currency}}</p>
+		</li>	
+	</ul>
+</div>
